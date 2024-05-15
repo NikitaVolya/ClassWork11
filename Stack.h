@@ -25,7 +25,7 @@ public:
 	void pop();
 
 	bool empty() const { return !head; }
-	T& top() { if (head) return head; }
+	T& top() { if (head) return head->value; }
 	size_t size() const { return lenght; };
 };
 
