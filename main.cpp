@@ -3,18 +3,18 @@
 #include <stack>
 #include <string>
 
+#include "Stack.h"
+
 std::string myReversString(std::string text)
 {
-	std::stack<char> reverse;
+	Stack<char> revers;
 	for (int i = 0; i < text.size(); i++)
-		reverse.push(text.at(i));
+		revers.push(text.at(i));
 	text.clear();
-	while (!reverse.empty())
+	while (!revers.empty())
 	{
-		text.push_back(reverse.top());
-		if (reverse.size() != 1)
-			text += ' ';
-		reverse.pop();
+		text.push_back(revers.top());
+		revers.pop();
 	}
 	return text;
 }
@@ -25,8 +25,8 @@ std::string reversPhrase(std::string text)
 	std::stack<std::string> reverse;
 	for (int i = 0; i != -1; i = text.find(' ', i + 1))
 	{
-		int j = text.find(' ', i + 1);
-		std::string line = text.substr(i + 1, j - i - 1);
+		int j = text.find(' ', i + 1) - (i + 1);
+		std::string line = text.substr(i + 1, j);
 		line += ' ';
 		reverse.push(line);
 	}
@@ -41,7 +41,7 @@ std::string reversPhrase(std::string text)
 
 int main()
 {
-	std::cout << reversPhrase("English texts for beginners to practice reading and comprehension online and for free. Practicing your comprehension of written English  will both improve your vocabulary and understanding");
+	std::cout << myReversString("Hello world!");
 
 	return 0;
 }
