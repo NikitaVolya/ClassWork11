@@ -3,7 +3,7 @@
 #include <stack>
 #include <string>
 
-std::string myReverseString(std::string text)
+std::string myReversString(std::string text)
 {
 	std::stack<char> reverse;
 	for (int i = 0; i < text.size(); i++)
@@ -17,9 +17,32 @@ std::string myReverseString(std::string text)
 	return text;
 }
 
+std::string reversPhrase(std::string text)
+{
+	std::stack<std::string> reverse;
+	for (int i = 0; i != -1; i++)
+	{
+		int j = text.find(' ', i);
+		std::string line = text.substr(i, j - i);
+		reverse.push(line);
+
+		i = text.find(' ', i);
+		if (i == -1) break;
+	}
+	text.clear();
+	while (!reverse.empty())
+	{
+		text.append(reverse.top());
+		if (reverse.size() != 1)
+			text += ' ';
+		reverse.pop();
+	}
+	return text;
+}
+
 int main()
 {
-	std::cout << myReverseString("Hello world!");
+	std::cout << reversPhrase("English texts for beginners to practice reading and comprehension online and for free. Practicing your comprehension of written English  will both improve your vocabulary and understanding");
 
 	return 0;
 }
