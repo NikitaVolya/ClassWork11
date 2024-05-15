@@ -12,6 +12,8 @@ std::string myReversString(std::string text)
 	while (!reverse.empty())
 	{
 		text.push_back(reverse.top());
+		if (reverse.size() != 1)
+			text += ' ';
 		reverse.pop();
 	}
 	return text;
@@ -19,22 +21,19 @@ std::string myReversString(std::string text)
 
 std::string reversPhrase(std::string text)
 {
+	text = ' ' + text;
 	std::stack<std::string> reverse;
-	for (int i = 0;; i++)
+	for (int i = 0; i != -1; i = text.find(' ', i + 1))
 	{
-		int j = text.find(' ', i);
-		std::string line = text.substr(i, j - i);
+		int j = text.find(' ', i + 1);
+		std::string line = text.substr(i + 1, j - i - 1);
+		line += ' ';
 		reverse.push(line);
-
-		i = text.find(' ', i);
-		if (i == -1) break;
 	}
 	text.clear();
 	while (!reverse.empty())
 	{
 		text.append(reverse.top());
-		if (reverse.size() != 1)
-			text += ' ';
 		reverse.pop();
 	}
 	return text;
