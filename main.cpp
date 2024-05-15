@@ -20,7 +20,7 @@ std::string myReversString(std::string text)
 std::string reversPhrase(std::string text)
 {
 	std::stack<std::string> reverse;
-	for (int i = 0; i != -1; i++)
+	for (int i = 0;; i++)
 	{
 		int j = text.find(' ', i);
 		std::string line = text.substr(i, j - i);
