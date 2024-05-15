@@ -8,9 +8,10 @@ std::string myReverseString(std::string text)
 	std::stack<char> reverse;
 	for (int i = 0; i < text.size(); i++)
 		reverse.push(text.at(i));
-	for (int i = 0; i < text.size(); i++)
+	text.clear();
+	while (!reverse.empty())
 	{
-		text[i] = reverse.top();
+		text.push_back(reverse.top());
 		reverse.pop();
 	}
 	return text;
