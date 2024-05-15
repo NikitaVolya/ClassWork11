@@ -15,9 +15,9 @@ class Stack
 {
 private:
 	Node<T>* head;
-	size_t size;
+	size_t lenght;
 public:
-	Stack() : head(nullptr), size(0) {};
+	Stack() : head(nullptr), lenght(0) {};
 	Stack(const std::initializer_list<T>& elements);
 	~Stack();
 
@@ -25,9 +25,8 @@ public:
 	void pop();
 
 	bool empty() const { return head == nullptr; }
-	T& top() { return head->value; }
-	const T& top() const { return head->value; }
-	size_t getSize() const { return size; };
+	T& top() { if (head) return head; }
+	size_t size() const { return lenght; };
 };
 
 template<typename T>
@@ -53,7 +52,7 @@ template<typename T>
 void Stack<T>::push(const T& value)
 {
 	head = new Node<T>{ value, head };
-	size++;
+	lenght++;
 }
 
 template<typename T>
@@ -66,5 +65,5 @@ inline void Stack<T>::pop()
 	head = head->next;
 
 	delete tmp;
-	size--;
+	lenght--;
 }

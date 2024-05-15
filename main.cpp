@@ -22,26 +22,26 @@ std::string myReversString(std::string text)
 std::string reversPhrase(std::string text)
 {
 	text = ' ' + text;
-	std::stack<std::string> reverse;
+	Stack<std::string> revers;
 	for (int i = 0; i != -1; i = text.find(' ', i + 1))
 	{
 		int j = text.find(' ', i + 1) - (i + 1);
 		std::string line = text.substr(i + 1, j);
 		line += ' ';
-		reverse.push(line);
+		revers.push(line);
 	}
 	text.clear();
-	while (!reverse.empty())
+	while (!revers.empty())
 	{
-		text.append(reverse.top());
-		reverse.pop();
+		text.append(revers.top());
+		revers.pop();
 	}
 	return text;
 }
 
 int main()
 {
-	std::cout << myReversString("Hello world!");
+	std::cout << reversPhrase("Hello world!");
 
 	return 0;
 }
