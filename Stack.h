@@ -24,7 +24,7 @@ public:
 	void push(const T& value);
 	void pop();
 
-	bool empty() const { return head == nullptr; }
+	bool empty() const { return !head; }
 	T& top() { if (head) return head; }
 	size_t size() const { return lenght; };
 };
